@@ -3,7 +3,7 @@ import uuid
 
 # Create your models here.
 class Empleado(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+    #id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     primer_nombre = models.CharField(max_length=50)
     segundo_nombre = models.CharField(max_length=50)
     primer_apellido = models.CharField(max_length=50)
@@ -12,7 +12,7 @@ class Empleado(models.Model):
     estado = models.BooleanField()
 class Contrato(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
-    empleado = models.ForeignKey(Empleado, 
+    empleado = models.OneToOneField(Empleado, 
                                  on_delete=models.PROTECT,
                                  related_name='contratos',
                                  related_query_name='contrato'
@@ -35,7 +35,7 @@ class Asistencia(models.Model):
 
 class Nomina(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
-    empleado = models.ForeignKey(Empleado, 
+    empleado = models.OneToOneField(Empleado, 
                                  on_delete=models.CASCADE,
                                  related_name='nominas',
                                  related_query_name='nomina'
