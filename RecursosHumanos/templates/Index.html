@@ -1,47 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'recursosHumanos/CSS/styleIndex.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Index RH</title>
 </head>
-<style>
-    body {
-        font-family: fantasy;
-    }
-
-    .banner {
-        font-size: 70px;
-    }
-
-    .alinear-items {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .size-inputs {
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .texto{
-        text-align: center;
-        border: solid 1px red;
-        position: relative;
-        margin-top: auto;
-    }
-    .footer{
-        position: fixed;
-        bottom: 0;
-        background-color: rgb(58, 58, 58);
-        width: 100%;
-        color: #ffffff;
-    }
-</style>
 
 <body>
     <nav class="navbar bg-primary-subtle">
@@ -64,17 +32,15 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 mt-5">
-                <div class="contenedor-login">
-                    <h3 class="mb-5 alinear-items">Bienvenido</h3>
-                    <div class="input-group mb-3 size-inputs">
-                        <input type="text" class="form-control" placeholder="Usurio" aria-label="Username"
-                            aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3 size-inputs">
-                        <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username"
-                            aria-describedby="basic-addon1">
-                    </div>
-                    <button type="button" class="btn btn-success alinear-items size-inputs">Ingresar</button>
+
+                <h3 class="mb-5 alinear-items">Bienvenido</h3>
+
+                <div class="d-flex flex-column align-items-center">
+                    <input type="text" class="form-control mb-3 w-75" placeholder="Usuario">
+                    <input type="password" class="form-control mb-3 w-75" placeholder="Contraseña">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-success alinear-items" id="inicioBoton">Ingresar</button>
                 </div>
             </div>
         </div>

@@ -20,3 +20,5 @@ def empleado(request, empleado_id):
         data = None
     return render(request, 'paginas/lista-empleados.html', {'empleado': data,
                                                             'empleados': lista_empleados})
+
+
