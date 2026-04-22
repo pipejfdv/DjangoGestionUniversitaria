@@ -1,0 +1,49 @@
+{% extends '../primary-layout.html' %}
+{% load static %}
+
+
+{% block lista_empleados %}
+<section>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Documento</th>
+                <th>Primer Nombre</th>
+                <th>Segundo Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Estado</th>
+                <th>Cargo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if empleados %}
+                {% for empleado in empleados %}
+                <tr>
+                    <td>{{ empleado.id }}</td>
+                    <td>{{ empleado.documento }}</td>
+                    <td>{{ empleado.primer_nombre }}</td>
+                    <td>{{ empleado.segundo_nombre }}</td>
+                    <td>{{ empleado.primer_apellido }}</td>
+                    <td>{{ empleado.segundo_apellido }}</td>
+                    <td>{{ empleado.estado }}</td>
+                    <td>{{ empleado.contratos.cargo.cargo}}</td>
+                    <td>
+                        <a href="{% url 'editar_empleado' empleado.id %}">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="9" class="text-center">
+                        No hay empleados registrados
+                    </td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}
+

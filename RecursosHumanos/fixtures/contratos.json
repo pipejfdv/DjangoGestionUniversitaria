@@ -1,0 +1,30 @@
+[
+  {
+    "model": "RecursosHumanos.tipocontrato",
+    "pk": 1,
+    "fields": {
+      "tipo_contrato": "Término Indefinido"
+    }
+  },
+  {
+    "model": "RecursosHumanos.tipocontrato",
+    "pk": 2,
+    "fields": {
+      "tipo_contrato": "Término Fijo"
+    }
+  },
+  {
+    "model": "RecursosHumanos.tipocontrato",
+    "pk": 3,
+    "fields": {
+      "tipo_contrato": "Prestación de Servicios"
+    }
+  },
+  {
+    "model": "RecursosHumanos.tipocontrato",
+    "pk": 4,
+    "fields": {
+      "tipo_contrato": "Aprendizaje"
+    }
+  }
+]

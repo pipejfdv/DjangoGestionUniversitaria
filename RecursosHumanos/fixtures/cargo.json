@@ -1,0 +1,44 @@
+[
+  {
+    "model": "RecursosHumanos.cargo",
+    "pk": 1,
+    "fields": {
+      "cargo": "Administrador"
+    }
+  },
+  {
+    "model": "RecursosHumanos.cargo",
+    "pk": 2,
+    "fields": {
+      "cargo": "Recursos Humanos"
+    }
+  },
+  {
+    "model": "RecursosHumanos.cargo",
+    "pk": 3,
+    "fields": {
+      "cargo": "Contador"
+    }
+  },
+  {
+    "model": "RecursosHumanos.cargo",
+    "pk": 4,
+    "fields": {
+      "cargo": "Soporte Técnico"
+    }
+  },
+  {
+    "model": "RecursosHumanos.cargo",
+    "pk": 5,
+    "fields": {
+      "cargo": "Gerente"
+    }
+  },
+  {
+    "model": "RecursosHumanos.cargo",
+    "pk": 6,
+    "fields": {
+      "cargo": "Operario"
+    }
+  }
+]

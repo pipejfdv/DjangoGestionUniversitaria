@@ -1,0 +1,9 @@
+[
+  {
+    "model": "RecursosHumanos.area",
+    "pk": 1,
+    "fields": {
+      "area": "Administrativo"
+    }
+  }
+]

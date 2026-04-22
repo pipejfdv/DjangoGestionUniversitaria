@@ -1,0 +1,168 @@
+{% extends '../primary-layout.html' %}
+{% load static %}
+
+{% block update_empleado %}
+<div class="container">
+    <form method="POST" action="{% url 'actualizar_empleado' empleado.id %}">
+    {% csrf_token %}
+
+    <div class="row d-flex justify-content-center mt-3">
+
+        <div class="col-9 d-flex justify-content-center align-items-center">
+            <h1>Editar Empleado</h1>
+        </div>
+
+        <div class="col-3 d-flex justify-content-center align-items-center">
+            <h5>Estado</h5>
+            {% if empleado.estado %}
+                <span class="badge bg-success">Activo</span>
+            {% else %}
+                <span class="badge bg-danger">Inactivo</span>
+            {% endif %}
+        </div>
+
+        <!-- Tipo documento (solo lectura) -->
+        <div class="col-sm-12 col-lg-4 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Tipo Documento</span>
+                <input type="text" class="form-control"
+                       value="{{ empleado.tipo_documento.abreviatura }}"
+                       disabled>
+            </div>
+        </div>
+
+        <!-- Documento -->
+        <div class="col-sm-12 col-lg-4 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Documento</span>
+                <input type="text" class="form-control"
+                       value="{{ empleado.documento }}"
+                       disabled>
+            </div>
+        </div>
+
+        <!-- salario -->
+        <div class="col-sm-12 col-lg-4 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Salario</span>
+                <input type="number" class="form-control"
+                       name="salario"
+                       value="{{ empleado.contratos.salario }}">
+            </div>
+        </div>
+
+        <!-- Nombres -->
+        <div class="row">
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Primer Nombre</span>
+                    <input type="text" class="form-control"
+                           name="primer_nombre"
+                           value="{{ empleado.primer_nombre }}">
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Segundo Nombre</span>
+                    <input type="text" class="form-control"
+                           name="segundo_nombre"
+                           value="{{ empleado.segundo_nombre }}">
+                </div>
+            </div>
+        </div>
+
+        <!-- Apellidos -->
+        <div class="row">
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Primer Apellido</span>
+                    <input type="text" class="form-control"
+                           name="primer_apellido"
+                           value="{{ empleado.primer_apellido }}">
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Segundo Apellido</span>
+                    <input type="text" class="form-control"
+                           name="segundo_apellido"
+                           value="{{ empleado.segundo_apellido }}">
+                </div>
+            </div>
+        </div>
+
+        <!-- Área -->
+        <div class="col-sm-12 col-lg-4 col-md-6">
+            <select class="form-select mb-3 campo-requerido" name="area">
+                {% for area in areas %}
+                    <option value="{{ area.id }}"
+                        {% if area.id == empleado.area.id %}selected{% endif %}>
+                        {{ area.area }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Cargo -->
+        <div class="col-sm-12 col-lg-4 col-md-6">
+                        <select class="form-select mb-3 campo-requerido" name="cargo">
+                {% for cargo in cargos %}
+                    <option value="{{ cargo.id }}"
+                        {% if cargo.id == empleado.contratos.cargo.id %}selected{% endif %}>
+                        {{ cargo.cargo }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Correo -->
+        <div class="col-sm-12 col-lg-4 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Correo</span>
+                <input type="email" class="form-control"
+                       name="correo"
+                       value="{{ empleado.correo }}">
+            </div>
+        </div>
+
+        <!-- Tipo contrato -->
+        <div class="col-sm-12 col-lg-4 col-md-6">
+            <label class="form-label">Tipo contrato</label>
+            <select class="form-select mb-3 campo-requerido" name="tipo_contrato">
+                {% for contrato in tipos_contrato %}
+                    <option value="{{ contrato.id }}"
+                        {% if contrato.id == empleado.contratos.tipo_contrato.id %}selected{% endif %}>
+                        {{ contrato.tipo_contrato }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Fechas -->
+        <div class="col-md-4">
+            <label class="form-label">Fecha Ingreso</label>
+            <input type="date" class="form-control"
+                   name="fecha_ingreso"
+                   value="{{ empleado.contratos.fecha_ingreso|date:'Y-m-d' }}">
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label">Fecha Retiro</label>
+            <input type="date" class="form-control"
+                   name="fecha_retiro"
+                   value="{{ empleado.contratos.fecha_retiro|date:'Y-m-d' }}">
+        </div>
+
+        <!-- Botón -->
+        <div class="col-md-4 d-flex align-items-end mt-3">
+            <button type="submit" class="btn btn-success w-100">
+                Actualizar
+            </button>
+        </div>
+    </div>
+</form>
+
+</div>
+{% endblock update_empleado %}

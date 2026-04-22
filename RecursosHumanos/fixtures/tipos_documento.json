@@ -1,0 +1,42 @@
+[
+  {
+    "model": "RecursosHumanos.tipodocumento",
+    "pk": 1,
+    "fields": {
+      "tipo_documento": "Cédula de Ciudadanía",
+      "abreviatura": "CC"
+    }
+  },
+  {
+    "model": "RecursosHumanos.tipodocumento",
+    "pk": 2,
+    "fields": {
+      "tipo_documento": "Pasaporte",
+      "abreviatura": "PS"
+    }
+  },
+  {
+    "model": "RecursosHumanos.tipodocumento",
+    "pk": 3,
+    "fields": {
+      "tipo_documento": "Cédula de Extranjería",
+      "abreviatura": "CE"
+    }
+  },
+  {
+    "model": "RecursosHumanos.tipodocumento",
+    "pk": 4,
+    "fields": {
+      "tipo_documento": "Permiso Temporal",
+      "abreviatura": "PT"
+    }
+  },
+  {
+    "model": "RecursosHumanos.tipodocumento",
+    "pk": 5,
+    "fields": {
+      "tipo_documento": "Tarjeta de Identidad",
+      "abreviatura": "TI"
+    }
+  }
+]
