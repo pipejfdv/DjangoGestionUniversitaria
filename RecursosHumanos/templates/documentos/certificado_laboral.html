@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .titulo {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .firma {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <p class="titulo">CERTIFICADO LABORAL</p>
+
+    <p>
+        La empresa <strong>UNIVERSIDAD UNINPAHU</strong> certifica que
+        <strong>{{ empleado.primer_nombre }} {{ empleado.primer_apellido }}</strong>,
+        identificado con tipo {{ empleado.tipo_documento.abreviatura }} documento número 
+        <strong>{{ empleado.documento }}</strong>,
+        labora en nuestra institución desde el día
+        <strong>{{ contrato.fecha_ingreso|date:"d/m/Y" }}</strong>,
+        desempeñando el cargo de <strong>{{ contrato.cargo.cargo }}</strong>.
+    </p>
+
+    <p>
+        El presente certificado se expide a solicitud del interesado,
+        el día {{ hoy|date:"d/m/Y" }}.
+    </p>
+
+    <div class="firma">
+        <p>______________________________</p>
+        <p><strong>Departamento de Recursos Humanos</strong></p>
+        <p><strong>Juan Felipe Delgadillo V.</strong></p>
+        <p><strong>Director de Recursos Humanos</strong></p>
+    </div>
+
+</body>
+</html>

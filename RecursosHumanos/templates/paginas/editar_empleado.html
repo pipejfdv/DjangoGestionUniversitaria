@@ -95,10 +95,10 @@
 
         <!-- Área -->
         <div class="col-sm-12 col-lg-4 col-md-6">
-            <select class="form-select mb-3 campo-requerido" name="area">
+            <select class="form-select mb-3 campo-requerido" name="area" required>
                 {% for area in areas %}
                     <option value="{{ area.id }}"
-                        {% if area.id == empleado.area.id %}selected{% endif %}>
+                        {% if area.id == empleado.contratos.area.id %}selected{% endif %}>
                         {{ area.area }}
                     </option>
                 {% endfor %}
@@ -107,7 +107,7 @@
 
         <!-- Cargo -->
         <div class="col-sm-12 col-lg-4 col-md-6">
-                        <select class="form-select mb-3 campo-requerido" name="cargo">
+                        <select class="form-select mb-3 campo-requerido" name="cargo" required>
                 {% for cargo in cargos %}
                     <option value="{{ cargo.id }}"
                         {% if cargo.id == empleado.contratos.cargo.id %}selected{% endif %}>
@@ -145,7 +145,7 @@
             <label class="form-label">Fecha Ingreso</label>
             <input type="date" class="form-control"
                    name="fecha_ingreso"
-                   value="{{ empleado.contratos.fecha_ingreso|date:'Y-m-d' }}">
+                   value="{{ empleado.contratos.fecha_ingreso|date:'Y-m-d' }}" required>
         </div>
 
         <div class="col-md-4">

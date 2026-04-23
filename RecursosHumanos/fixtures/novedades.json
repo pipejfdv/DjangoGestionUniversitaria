@@ -1,0 +1,26 @@
+[
+  {
+    "model": "RecursosHumanos.novedades",
+    "pk": 1,
+    "fields": {
+      "novedad": "Vacaciones",
+      "observaciones": "Durante las vacaciones no se paga ARL y el pago de parafiscales es opcional según política de la empresa."
+    }
+  },
+  {
+    "model": "RecursosHumanos.novedades",
+    "pk": 2,
+    "fields": {
+      "novedad": "Incapacidad",
+      "observaciones": "No se paga ARL. A partir del tercer día, la incapacidad se paga al 66.66% del salario mínimo legal vigente."
+    }
+  },
+  {
+    "model": "RecursosHumanos.novedades",
+    "pk": 3,
+    "fields": {
+      "novedad": "Suspensión",
+      "observaciones": "Durante la suspensión solo se realiza el pago de pensión (16% total o 12% correspondiente al empleador)."
+    }
+  }
+]

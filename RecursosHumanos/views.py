@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.core.validators import validate_email
-from django.core.exceptions import ValidationError
+from django.http import HttpResponse
+from django.db.models import Count
 from django.shortcuts import redirect
-from django.db import IntegrityError
+from xhtml2pdf import pisa
+from django.template.loader import get_template
 import datetime
 from . import models
 # Create your views here.
@@ -16,14 +17,6 @@ def inicio(request):
     tipo_contrato = models.TipoContrato.objects.all()
     return render(request, 'paginas/inicio.html', {'empleados': data, 'areas': areas, 'cargos': cargos, 'tipos_contrato': tipo_contrato})
 
-def eliminar_empleado(request, empleado_id):
-    try:
-        lista_empleados = models.Empleado.objects.all()
-        data = models.Empleado.objects.get(id=empleado_id).delete()
-    except models.Empleado.DoesNotExist:
-        data = None
-    return render(request, 'paginas/inicio.html', {'empleado': data,
-                                                            'empleados': lista_empleados})
 def editar_empleado(request, empleado_id):
     empleado = models.Empleado.objects.get(id=empleado_id)
     areas = models.Area.objects.all()
@@ -93,4 +86,71 @@ def crear_empleado(request):
         )
         return redirect('inicio')
 
+def areas(request):
+    data = models.Empleado.objects.all()
+    documento = models.TipoDocumento.objects.all()
+    cargos = models.Cargo.objects.all()
+    tipo_contrato = models.TipoContrato.objects.all()
+    areas = models.Area.objects.annotate(total_empleados=Count('areas__empleado'))
+    return render(request, 'paginas/areas_trabajo.html', {'areas': areas , 'empleados': data, 'documentos': documento, 'cargos': cargos, 'tipos_contrato': tipo_contrato})
+
+def editar_area(request, area_id):
+    area = models.Area.objects.get(id=area_id)
+    if request.method == 'POST':
+        area.area = request.POST.get('area')
+        area.save()
+        return redirect('areas')
+
+def agregar_area(request):
+    if request.method == 'POST':
+        models.Area.objects.create(area=request.POST['area'])
+        return redirect('areas')
+def eliminar_area(request, area_id):
+    area = models.Area.objects.get(id=area_id)
+    area.delete()
+    return redirect('areas')
+
+#novedades
+def novedades(request, empleado_id):
+    empleado = models.Empleado.objects.get(id=empleado_id)
+    novedades_empleado = empleado.novedades_empleado.all()
+    documento = models.TipoDocumento.objects.all()
+    cargos = models.Cargo.objects.all()
+    tipo_contrato = models.TipoContrato.objects.all()
+    areas = models.Area.objects.all()
+    novedades = models.Novedades.objects.all()
+    return render(request, 'paginas/novedades.html', {'novedades_empleado': novedades_empleado, 
+                                                      'empleado': empleado, 
+                                                      'novedades': novedades,
+                                                      'documentos': documento,
+                                                      'cargos': cargos,
+                                                      'tipos_contrato': tipo_contrato,
+                                                      'areas': areas})
+
+def agregar_novedad(request):
+    if request.method == 'POST':
+        fecha_inicial = datetime.datetime.strptime(request.POST['fecha_inicial'], '%Y-%m-%d').date()
+        duracion = int(request.POST['dias_duracion'])
+        duracion = datetime.timedelta(days=duracion)
+        fecha_final = fecha_inicial + duracion
+        models.NovedadesEmpleado.objects.create(
+            empleado=models.Empleado.objects.get(id=request.POST['empleado']),
+            novedades=models.Novedades.objects.get(id=request.POST['novedad']),
+            fecha_inicial=fecha_inicial,
+            fecha_final=fecha_final
+        )
+        return redirect('novedades', empleado_id=request.POST['empleado'])
     
+def certificado_laboral(request, empleado_id):
+    empleado = models.Empleado.objects.get(id=empleado_id)
+    contrato = empleado.contratos
+    hoy = datetime.date.today()
+
+    template = get_template('documentos/certificado_laboral.html')
+    html = template.render({'empleado': empleado, 
+                            'contrato': contrato, 
+                            'hoy': hoy})
+    respuesta = HttpResponse(content_type='application/pdf')
+    respuesta['Content-Disposition'] = 'attachment; filename="certificado_laboral.pdf"'
+    pisa.CreatePDF(html, dest=respuesta)
+    return respuesta

@@ -1,0 +1,197 @@
+[
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 1,
+    "fields": {
+      "empleado": 1,
+      "salario": 2800000,
+      "fecha_ingreso": "2022-01-15",
+      "fecha_retiro": null,
+      "cargo": 1,
+      "area": 1,
+      "tipo_contrato": 1
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 2,
+    "fields": {
+      "empleado": 2,
+      "salario": 3200000,
+      "fecha_ingreso": "2021-06-01",
+      "fecha_retiro": null,
+      "cargo": 2,
+      "area": 1,
+      "tipo_contrato": 2
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 3,
+    "fields": {
+      "empleado": 3,
+      "salario": 2500000,
+      "fecha_ingreso": "2020-09-10",
+      "fecha_retiro": null,
+      "cargo": 3,
+      "area": 1,
+      "tipo_contrato": 1
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 4,
+    "fields": {
+      "empleado": 4,
+      "salario": 2200000,
+      "fecha_ingreso": "2024-02-01",
+      "fecha_retiro": null,
+      "cargo": 4,
+      "area": 1,
+      "tipo_contrato": 3
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 5,
+    "fields": {
+      "empleado": 5,
+      "salario": 4000000,
+      "fecha_ingreso": "2019-11-20",
+      "fecha_retiro": null,
+      "cargo": 5,
+      "area": 1,
+      "tipo_contrato": 1
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 6,
+    "fields": {
+      "empleado": 6,
+      "salario": 3100000,
+      "fecha_ingreso": "2020-03-10",
+      "fecha_retiro": null,
+      "cargo": 1,
+      "area": 1,
+      "tipo_contrato": 2
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 7,
+    "fields": {
+      "empleado": 7,
+      "salario": 2700000,
+      "fecha_ingreso": "2021-07-01",
+      "fecha_retiro": null,
+      "cargo": 2,
+      "area": 1,
+      "tipo_contrato": 1
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 8,
+    "fields": {
+      "empleado": 8,
+      "salario": 2300000,
+      "fecha_ingreso": "2022-09-15",
+      "fecha_retiro": null,
+      "cargo": 3,
+      "area": 1,
+      "tipo_contrato": 3
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 9,
+    "fields": {
+      "empleado": 9,
+      "salario": 2900000,
+      "fecha_ingreso": "2020-11-05",
+      "fecha_retiro": null,
+      "cargo": 4,
+      "area": 1,
+      "tipo_contrato": 2
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 10,
+    "fields": {
+      "empleado": 10,
+      "salario": 2600000,
+      "fecha_ingreso": "2023-05-01",
+      "fecha_retiro": null,
+      "cargo": 5,
+      "area": 1,
+      "tipo_contrato": 1
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 11,
+    "fields": {
+      "empleado": 11,
+      "salario": 3500000,
+      "fecha_ingreso": "2018-08-20",
+      "fecha_retiro": null,
+      "cargo": 1,
+      "area": 1,
+      "tipo_contrato": 2
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 12,
+    "fields": {
+      "empleado": 12,
+      "salario": 2400000,
+      "fecha_ingreso": "2021-02-14",
+      "fecha_retiro": null,
+      "cargo": 2,
+      "area": 1,
+      "tipo_contrato": 1
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 13,
+    "fields": {
+      "empleado": 13,
+      "salario": 3300000,
+      "fecha_ingreso": "2019-10-09",
+      "fecha_retiro": null,
+      "cargo": 3,
+      "area": 1,
+      "tipo_contrato": 2
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 14,
+    "fields": {
+      "empleado": 14,
+      "salario": 2100000,
+      "fecha_ingreso": "2024-01-12",
+      "fecha_retiro": null,
+      "cargo": 4,
+      "area": 1,
+      "tipo_contrato": 3
+    }
+  },
+  {
+    "model": "RecursosHumanos.contrato",
+    "pk": 15,
+    "fields": {
+      "empleado": 15,
+      "salario": 3900000,
+      "fecha_ingreso": "2020-04-18",
+      "fecha_retiro": null,
+      "cargo": 5,
+      "area": 1,
+      "tipo_contrato": 1
+    }
+  }
+]

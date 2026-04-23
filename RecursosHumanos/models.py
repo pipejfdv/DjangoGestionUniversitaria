@@ -32,13 +32,17 @@ class Contrato(models.Model):
     salario = models.IntegerField()
     fecha_ingreso = models.DateField()
     fecha_retiro = models.DateField(null=True)
-    cargo = models.ForeignKey(Cargo, on_delete=models.PROTECT)
-    area = models.ForeignKey(Area, on_delete=models.PROTECT)
+    cargo = models.ForeignKey(Cargo, on_delete=models.PROTECT, related_name='cargos')
+    area = models.ForeignKey(Area, on_delete=models.SET_NULL, related_name='areas', null=True)
     tipo_contrato = models.ForeignKey(TipoContrato, on_delete=models.PROTECT)
 
-class Nomina(models.Model):
-    empleado = models.OneToOneField(Empleado, 
-                                 on_delete=models.CASCADE,
-                                 related_name='nominas',
-                                 related_query_name='nomina')
+class Novedades(models.Model):
     novedad = models.CharField(max_length=80)
+    observaciones = models.TextField(null=True)
+#intermediraria
+class NovedadesEmpleado(models.Model):
+    empleado = models.ForeignKey(Empleado, on_delete=models.PROTECT, related_name='novedades_empleado')
+    novedades = models.ForeignKey(Novedades, on_delete=models.PROTECT)
+    fecha_inicial = models.DateField()
+    fecha_final = models.DateField()
+    fecha_creada = models.DateField(auto_now_add=True)
