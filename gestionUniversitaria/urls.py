@@ -7,4 +7,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #manera en la se incluyen todas las rutas de los demás modulos
     path('rrhh/', include('RecursosHumanos.urls')),
+    path('contabilidad/', include('Contabilidad.urls')),
 ]
