@@ -1,56 +1,62 @@
 {% extends "home.html" %}
 
 {% block main %}
-    <h2>Gestión de Categorías</h2>
 
-<div>
-    <a href="{% url 'inventario:crear_categoria' %}">
-        Crear nueva categoría
+<div class="actions">
+    <a href="{% url 'inventario:crear_categoria' %}" class="btn">
+        + Crear nueva categoría
     </a>
 </div>
-
-<table>
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Fecha creación</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        {% for categoria in categorias %}
-        <tr>
-            <td>
-                {{ categoria.nombre_categoria }}
-            </td>
-            <td>
-                {{ categoria.descripcion_categoria }}
-            </td>
-            <td>
-                {{ categoria.fecha_creacion_categoria }}
-            </td>
-            <td>
-
-                <a href="{% url 'inventario:actualizar_categoria' categoria.id %}"">
-                    Actualizar
-                </a>
-
-                <a href="{% url 'inventario:eliminar_categoria' categoria.id %}">
-                    Eliminar
-                </a>
-
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td>
-                No hay categorías registradas
-            </td>
-        </tr>
-        {% endfor %}
-
-    </tbody>
-</table>
+<div class="main-cards">
+    <div class="card">
+        <h2 style="margin-bottom: 25px;">
+            Gestión de Categorías
+        </h2>
+        <div class="table-container">
+            <div class="table-scroll">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Fecha creación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for categoria in categorias %}
+                        <tr>
+                            <td>
+                                {{ categoria.nombre_categoria }}
+                            </td>
+                            <td>
+                                {{ categoria.descripcion_categoria }}
+                            </td>
+                            <td>
+                                {{ categoria.fecha_creacion_categoria|date:"d/m/Y" }}
+                            </td>
+                            <td>
+                                <div class="acciones">
+                                    <a href="{% url 'inventario:actualizar_categoria' categoria.id %}" class="btn small edit">
+                                        Editar
+                                    </a>
+                                    <a href="{% url 'inventario:eliminar_categoria' categoria.id %}" class="btn small delete">
+                                        Eliminar
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="10">
+                                No hay categorías registradas
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

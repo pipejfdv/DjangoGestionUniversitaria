@@ -1,49 +1,53 @@
 {% extends "home.html" %}
 
 {% block main %}
-    {% if prestamo %}
-        <form method="POST" action="{% url 'inventario:actualizar_prestamo' prestamo.id %}">
-        
-    {% else %}
-        <form method="POST" action="{% url 'inventario:guardar_prestamo' %}">
-    {% endif %}
-    {% csrf_token %}
-    <div>
-        <label>Fecha devolucion esperada</label>
-        <p>{{formulario.fecha_devolucion_esperada}}</p>
+
+<div class="form-section">
+    <div class="card form-card">
+        {% if prestamo %}
+            <h2>Actualizar Préstamo</h2>
+            <form method="POST" action="{% url 'inventario:actualizar_prestamo' prestamo.id %}">
+        {% else %}
+            <h2>Registrar Préstamo</h2>
+            <form method="POST" action="{% url 'inventario:guardar_prestamo' %}">
+        {% endif %}
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Fecha devolución esperada</label>
+                {{ formulario.fecha_devolucion_esperada }}
+            </div>
+            {% if prestamo %}
+                <div class="form-group">
+                    <label>Fecha devolución</label>
+                    {{ formulario.fecha_devolucion }}
+                </div>
+                <div class="form-group">
+                    <label>Observaciones devolución</label>
+                    {{ formulario.observaciones_devolucion }}
+                </div>
+            {% endif %}
+            <div class="form-group">
+                <label>Estado préstamo</label>
+                {{ formulario.estado_prestamo }}
+            </div>
+            {% if not prestamo %}
+                <div class="form-group">
+                    <label>Observaciones entrega</label>
+                    {{ formulario.observaciones_entrega }}
+                </div>
+                <div class="form-group">
+                    <label>Item</label>
+                    {{ formulario.item }}
+                </div>
+            {% endif %}
+            <div class="form-buttons">
+                <button type="submit" class="btn">
+                    Guardar
+                </button>
+            </div>
+        </form>
     </div>
-    <br>
-    {% if prestamo %}
-        <div>
-            <label>Fecha devolucion</label>
-            <p>{{formulario.fecha_devolucion}}</p>
-        </div>
-        <br>
-        <div>
-            <label>Observaciones devolucion</label>
-            <p>{{formulario.observaciones_devolucion}}</p>
-        </div>
-        <br>
-    {% endif %}
-    <div>
-        <label>Estado prestamo</label>
-        <p>{{formulario.estado_prestamo}}</p>
-    </div>
-    <br>
-    {% if not prestamo %}
-        <div>
-            <label>Observaciones entrega</label>
-            <p>{{formulario.observaciones_entrega}}</p>
-        </div>
-        <br>
-        <div>
-            <label>Item</label>
-            <p>{{formulario.item}}</p>
-        </div>
-        <br>
-    {% endif %}
-    <button type="submit">
-        Guardar
-    </button>
-</form>
+</div>
 {% endblock %}
