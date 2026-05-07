@@ -1,59 +1,73 @@
 {% extends "home.html" %}
 
 {% block main %}
-    {% if item %}
-        <form method="POST" action="{% url 'inventario:actualizar_item' item.id %}">
-        
-    {% else %}
-        <form method="POST" action="{% url 'inventario:guardar_item' %}">
-    {% endif %}
-    {% csrf_token %}
-    <div>
-        <label>Nombre item</label>
-        <p>{{formulario.nombre_item}}</p>
-    </div>
-    <br>
-     {% if not item %}
-        <div>
+
+<div class="form-section">
+    <div class="card form-card">
+
+        {% if item %}
+            <h2>Actualizar Item</h2>
+            <form method="POST" action="{% url 'inventario:actualizar_item' item.id %}">
+        {% else %}
+            <h2>Registrar Item</h2>
+            <form method="POST" action="{% url 'inventario:guardar_item' %}">
+        {% endif %}
+
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label>Nombre item</label>
+            {{ formulario.nombre_item }}
+        </div>
+
+        {% if not item %}
+        <div class="form-group">
             <label>Marca item</label>
-            <p>{{formulario.marca_item}}</p>
+            {{ formulario.marca_item }}
         </div>
-        <br>
-    {% endif %}
-    <div>
-        <label>Descripción item</label>
-        <p>{{formulario.descripcion_item}}</p>
-    </div>
-    <br>
-    <div>
-        <label>Ubicacion item</label>
-        <p>{{formulario.ubicacion_item}}</p>
-    </div>
-    <br>
-    <div>
-        <label>Estado item</label>
-        <p>{{formulario.estado_item}}</p>
-    </div>
-    <br>
-    <div>
-        <label>Categoria</label>
-        <p>{{ formulario.categoria }}</p>
-    </div>
-    <br>
-    {% if not item %}
-        <div>
+        {% endif %}
+
+        <div class="form-group">
+            <label>Descripción item</label>
+            {{ formulario.descripcion_item }}
+        </div>
+
+        <div class="form-group">
+            <label>Ubicación item</label>
+            {{ formulario.ubicacion_item }}
+        </div>
+
+        <div class="form-group">
+            <label>Estado item</label>
+            {{ formulario.estado_item }}
+        </div>
+
+        <div class="form-group">
+            <label>Categoría</label>
+            {{ formulario.categoria }}
+        </div>
+
+        {% if not item %}
+        <div class="form-group">
             <label>Fecha compra item</label>
-            <p>{{formulario.fecha_compra}}</p>
+            {{ formulario.fecha_compra }}
         </div>
-        <br>
-        <div>
+
+        <div class="form-group">
             <label>Valor item</label>
-            <p>{{formulario.valor_item}}</p>
+            {{ formulario.valor_item }}
         </div>
-        <br>
-    {% endif %}
-    <button type="submit">
-        Guardar
-    </button>
-</form>
+        {% endif %}
+
+        <div class="form-buttons">
+            <button type="submit" class="btn">
+                Guardar
+            </button>
+        </div>
+
+    </form>
+
+    </div>
+</div>
+
 {% endblock %}

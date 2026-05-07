@@ -103,10 +103,11 @@ nav ul li a:hover {
     text-align: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     transition: 0.3s;
+    width: 100%;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
 }
 
 .card h3 {
@@ -141,21 +142,27 @@ nav ul li a:hover {
 /* CONTENEDOR DE TABLA */
 .table-container {
     margin-top: 20px;
+}
+
+/* SCROLL HORIZONTAL */
+.table-scroll {
+    width: 100%;
     overflow-x: auto;
 }
 
 /* TABLA */
 .custom-table {
-    width: 100%;
-    table-layout: fixed;
+    width: 100%; /* fuerza espacio suficiente */
     border-collapse: collapse;
+    font-size: 13px;
+    background: white;
 }
 
 /* HEADER */
 .custom-table th {
     background: #f1f1f1;
     padding: 12px 10px;
-    text-align: left;
+    text-align: center;
     border-bottom: 2px solid #ddd;
     white-space: nowrap;
 }
@@ -165,6 +172,8 @@ nav ul li a:hover {
     padding: 10px;
     border-bottom: 1px solid #eee;
     vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
 }
 
 /* HOVER */
@@ -172,15 +181,14 @@ nav ul li a:hover {
     background-color: #f9f9f9;
 }
 
-/* SOLO DESCRIPCIÓN (NO TODAS LAS COLUMNAS) */
+/* DESCRIPCIÓN */
 .custom-table td:nth-child(3) {
     max-width: 120px;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* ACCIONES */
+/* COLUMNA ACCIONES */
 .custom-table th:last-child,
 .custom-table td:last-child {
     width: 140px;
@@ -188,57 +196,91 @@ nav ul li a:hover {
     text-align: center;
 }
 
-/* BOTONES ACCIONES */
+/* ACCIONES */
 .acciones {
     display: flex;
     gap: 5px;
     justify-content: center;
-    flex-wrap: nowrap;
+    white-space: nowrap;
 }
 
 /* BOTONES PEQUEÑOS */
 .btn.small {
-    padding: 4px 6px;
+    padding: 3px 6px;
     font-size: 10px;
+    border-radius: 5px;
 }
 
-/* COLORES */
+/* BOTÓN EDITAR */
 .btn.edit {
     background: #6c757d;
 }
 
+/* BOTÓN ELIMINAR */
 .btn.delete {
     background: #dc3545;
 }
 
-/* CONTENEDOR CON SCROLL REAL */
-.table-scroll {
-    width: 100%;
-    overflow-x: auto;
-}
-
-/* TABLA MÁS ESTABLE */
-.custom-table {
-    width: 1200px; /* 🔥 clave: fuerza ancho real */
-    border-collapse: collapse;
-    font-size: 13px;
-}
-
-/* ACCIONES NO SE ROMPEN */
-.acciones {
+/* SECCIÓN FORMULARIO */
+.form-section {
+    margin: 40px;
     display: flex;
-    gap: 5px;
     justify-content: center;
-    white-space: nowrap;
 }
 
-/* BOTONES MÁS PEQUEÑOS */
-.btn.small {
-    padding: 3px 6px;
-    font-size: 10px;
+/* CARD DEL FORMULARIO */
+.form-card {
+    width: 100%;
+    max-width: 700px;
+    text-align: left;
 }
 
-/* FECHAS MÁS CORTAS VISUALMENTE */
-.custom-table td {
-    white-space: nowrap;
+/* TÍTULO */
+.form-card h2 {
+    margin-bottom: 25px;
+    color: #333;
+    text-align: center;
 }
+
+/* GRUPOS */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* LABELS */
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* INPUTS */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 100%;
+    transition: 0.3s;
+}
+
+/* FOCUS */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #ff5a2c;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 90, 44, 0.3);
+}
+
+/* BOTÓN */
+.form-buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
