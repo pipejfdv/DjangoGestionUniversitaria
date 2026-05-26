@@ -1,21 +1,25 @@
 ﻿{% extends "home.html" %}
 
 {% block main %}
-<div class="actions page-actions">
-    <a href="{% url 'inventario:crear_prestamo' %}" class="btn">+ Crear nuevo prestamo</a>
+
+<div class="actions">
+    <a href="{% url 'inventario:crear_prestamo' %}" class="btn btn-auto">
+        + Crear nuevo Prestamo
+    </a>
 </div>
 
-<div class="main-cards inventory-section">
-    <div class="card table-card">
-        <h3>Gestion de Prestamos</h3>
+<div class="main-cards">
+    <div class="card">
+        <h3>Gestión de Prestamos</h3>
+
         <div class="table-container">
             <div class="table-scroll">
-                <table class="custom-table loans-table">
+                <table class="custom-table">
                     <thead>
                         <tr>
-                            <th>Fecha prestamo</th>
-                            <th>Devolucion esperada</th>
-                            <th>Fecha devolucion</th>
+                            <th>Fecha Prestamo</th>
+                            <th>Devolucion Esperada</th>
+                            <th>Fecha Devolucion</th>
                             <th>Estado</th>
                             <th>Entrega</th>
                             <th>Devolucion</th>
@@ -23,7 +27,9 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
+
                     <tbody>
+
                         {% for prestamo in prestamos %}
                         <tr>
                             <td>{{ prestamo.fecha_prestamo|date:"d/m/Y H:i" }}</td>
@@ -33,24 +39,33 @@
                             <td>{{ prestamo.observaciones_entrega }}</td>
                             <td>{{ prestamo.observaciones_devolucion|default:"Sin registrar" }}</td>
                             <td>{{ prestamo.item.nombre_item }}</td>
+
                             <td class="acciones">
+
                                 {% if prestamo.estado_prestamo != "2" %}
-                                    <a href="{% url 'inventario:actualizar_prestamo' prestamo.id %}" class="btn small edit">Editar</a>
+                                <a href="{% url 'inventario:actualizar_prestamo' prestamo.id %}" class="btn small edit">
+                                    Editar
+                                </a>
                                 {% endif %}
-                                <a href="{% url 'inventario:eliminar_prestamo' prestamo.id %}" class="btn small delete">Eliminar</a>
+
+                                <a href="{% url 'inventario:eliminar_prestamo' prestamo.id %}" class="btn small delete">
+                                    Eliminar
+                                </a>
+
                             </td>
                         </tr>
+
                         {% empty %}
                         <tr>
                             <td colspan="8">No hay prestamos registrados</td>
                         </tr>
                         {% endfor %}
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}
-
-

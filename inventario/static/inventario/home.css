@@ -130,12 +130,19 @@ nav ul li a:hover {
 .btn {
     flex: 1;
     text-align: center;
-    padding: 15px;
+    padding: 15px 20px;
     background: #ff5a2c;
     color: white;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
+}
+
+.btn-auto {
+    display: inline-block;
+    flex: initial;
+    width: auto;
+    padding: 15px 20px;
 }
 
 /* CONTENEDOR DE TABLA */
@@ -155,7 +162,7 @@ nav ul li a:hover {
 .custom-table th {
     background: #f1f1f1;
     padding: 12px 10px;
-    text-align: left;
+    text-align: center;
     border-bottom: 2px solid #ddd;
     white-space: nowrap;
 }
@@ -165,6 +172,7 @@ nav ul li a:hover {
     padding: 10px;
     border-bottom: 1px solid #eee;
     vertical-align: middle;
+    text-align: center;
 }
 
 /* HOVER */
@@ -219,7 +227,7 @@ nav ul li a:hover {
 
 /* TABLA MÁS ESTABLE */
 .custom-table {
-    width: 1200px; /* 🔥 clave: fuerza ancho real */
+    width: 100%; 
     border-collapse: collapse;
     font-size: 13px;
 }
