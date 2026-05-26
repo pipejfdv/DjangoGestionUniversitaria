@@ -118,7 +118,6 @@ def guardar_item(request):
         ubicacion = request.POST["ubicacion_item"]
         fecha_compra = request.POST["fecha_compra"]
         valor = request.POST["valor_item"]
-        estado = request.POST["estado_item"]
         categoria = request.POST["categoria"]
         categoria_item = models.Categoria.objects.get(id=categoria)
 
@@ -129,7 +128,7 @@ def guardar_item(request):
             ubicacion_item = ubicacion,
             fecha_compra = fecha_compra,
             valor_item = valor,
-            estado_item = estado,
+            estado_item = "1",
             categoria = categoria_item,
         )
 
@@ -210,17 +209,20 @@ def crear_prestamo(request):
 def guardar_prestamo(request):
     if request.method == "POST":
         devolucion_esperada = request.POST["fecha_devolucion_esperada"]
-        estado = request.POST["estado_prestamo"]
         observaciones = request.POST["observaciones_entrega"]
         item = request.POST["item"]
+
         item_prestamo = models.Item.objects.get(id=item)
 
         nuevo_prestamo = models.Prestamo.objects.create(
             fecha_devolucion_esperada = devolucion_esperada,
-            estado_prestamo = estado,
+            estado_prestamo = "1",
             observaciones_entrega = observaciones,
             item = item_prestamo,
         )
+
+        item_prestamo.estado_item = "2"
+        item_prestamo.save()
 
         return redirect('inventario:prestamos')
 
@@ -231,7 +233,6 @@ def actualizar_prestamo(request, id):
     prestamo = models.Prestamo.objects.get(id = id)
 
     if request.method == "POST":
-        devolucion_esperada = request.POST["fecha_devolucion_esperada"]
         devolucion = request.POST["fecha_devolucion"]
 
         if devolucion == "":
@@ -240,10 +241,13 @@ def actualizar_prestamo(request, id):
         estado = request.POST["estado_prestamo"]
         observaciones = request.POST["observaciones_devolucion"]
 
-        prestamo.fecha_devolucion_esperada = devolucion_esperada
         prestamo.fecha_devolucion = devolucion
         prestamo.estado_prestamo = estado
         prestamo.observaciones_devolucion = observaciones
+
+        if estado == "2":
+            prestamo.item.estado_item = "1" 
+            prestamo.item.save()
 
         prestamo.save()
 

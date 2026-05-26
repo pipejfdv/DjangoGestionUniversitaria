@@ -38,6 +38,6 @@ class FormularioPrestamo(forms.Form):
     estado_prestamo = forms.ChoiceField(choices=ESTADOS_PRESTAMO, required=True)
     observaciones_entrega = forms.CharField(help_text="El equipo no presenta ningun fallo, rasguño, golpe, etc", required=True)
     observaciones_devolucion = forms.CharField(help_text="El equipo se devuelve sin ninguna falla, rasguño, golpe, etc", required=False)
-    item = forms.ModelChoiceField(queryset=models.Item.objects.all())
+    item = forms.ModelChoiceField(queryset=models.Item.objects.filter(estado_item="1"), empty_label="Seleccione un item disponible")
 
 
